@@ -1,0 +1,36 @@
+<h1>Angular interview practice – Set 1</h1>
+<h2>Data Binding</h2>
+<h3>Coding practice</h3>
+<p>1. Create a counter with Increment, Decrement and Reset buttons.</p>
+<button (click)="increment()"> + </button>
+<button (click)="decrement()"> - </button>
+<button (click)="reset()"> Reset </button>
+<p>{{counter}}</p>
+
+<p>2. Create a search input using two-way binding and display the entered text. without using ngmodel</p>
+<input placeholder="search anything" [value]="searchText" (input)="Searching($event)">
+<p>{{searchText}}</p>
+<p>2.1 Create a search input using two-way binding and display the entered text. with using ngmodel</p>
+<input placeholder="searching...." [(ngModel)]="ngSearchText">
+<p>{{ngSearchText}}</p>
+
+<p>3. Disable a Submit button based on a component property.</p>
+<button [disabled]="!ngSearchText">submit</button>
+<p>3.1. Disable a Submit button based on a component property.</p>
+<input placeholder="searchingbysubmit" [value]="submitText" (input)="subText($event)">
+<button (click)="display()">Submit</button>
+<input value="{{ searchText }}">
+<p>{{submitText}}</p>
+
+<p>
+    4. Create a Parent and Child component.
+    Requirements:
+    1. In the parent, create a variable called username.
+    2. Pass username to the child using Input.
+    3. In the child, display the username inside an input field.
+    4. When the user changes the input, emit the updated value using Output and EventEmitter.
+    5. Display the updated username in the parent.
+    Try implementing this independently first.
+</p>
+
+<input [value]="recivingUserName" (input)="onType($event)">
