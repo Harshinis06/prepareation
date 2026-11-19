@@ -1,0 +1,36 @@
+.working{
+   color:red
+}
+.off{
+    color:blue
+}
+.WFH{
+    color:chartreuse
+}
+.card {
+  padding: 30px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.highlight{
+   background-color: aqua;
+    //transform: translate(42px, 18px);
+    
+}
+
+.parent{
+    border:1px solid black;
+    padding:40px;
+}
+
+.child{
+    //background-color: brown;
+    border:1px solid black;
+    padding:20px;
+}
+
+.active {
+  background-color: green;
+  color: white;
+}

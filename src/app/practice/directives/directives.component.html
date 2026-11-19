@@ -1,0 +1,84 @@
+<h3>Use *ngIf to show or hide a section based on a Boolean property.</h3>
+<input [(ngModel)]="inputValue">
+<button *ngIf="inputValue" (click)="submit()">submit</button>
+<p>{{showInputValue}}</p>
+
+<h3>Use *ngFor to display a list of employees.</h3>
+<ul>list of employees
+    <li *ngFor='let emp of employees'>
+        {{emp.name}} {{emp.age}}
+    </li>
+</ul>
+
+<h3>Use ngClass to apply different CSS classes based on an employee's status.</h3>
+<ul>
+    <li *ngFor='let emp of employees'
+        [ngClass]="emp.status==='working' ? 'working' : emp.status==='off' ? 'off' :emp.status==='WFH' ? 'WFH' : ''">
+        {{emp.name}} {{emp.age}}
+    </li>
+</ul>
+<!-- [ngClass]="{'working':emp.status==='working','off':emp.status==='off','WFH':emp.status==='WFH'}" -->
+
+<h3>Use ngSwitch to display different content based on a status.</h3>
+<p>age</p>
+<button (click)="increment()">+</button>
+<button (click)="decrement()">-</button>
+<p>{{employeeAge}}</p>
+
+<div>employee details
+    <div *ngFor="let emp of employees">
+        <div [ngSwitch]="true">
+            <div *ngSwitchCase="employeeAge === 12 || employeeName === 'employee1'">
+                <span *ngIf="emp.age === employeeAge || emp.name == employeeName">{{emp.status}}</span>
+            </div>
+            <div *ngSwitchCase="employeeAge === 13 || employeeName === 'employee2'">
+                <span *ngIf="emp.age === employeeAge || emp.name == employeeName">{{emp.status}}</span>
+            </div>
+            <div *ngSwitchCase="employeeAge === 14 || employeeName === 'employee3'">
+                <span *ngIf="emp.age === employeeAge || emp.name == employeeName">{{emp.status}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h3>Use ngStyle to dynamically change an element's background colour.</h3>
+<div *ngFor="let trans of transaction">
+    <span> {{ trans.id }}</span>
+    <span> {{ trans.amount }}</span>
+    <!-- <span [ngStyle]="{stateValue == 'Success' ? 'background-color': green'  : stateValue  == 'Failed' ? 'red' :''}"> {{ trans.status }}</span> -->
+
+    <span [ngStyle]="{'background-color': stateValue===trans.status? getColor(stateValue) : ''}">{{trans.status}}</span>
+
+</div>
+
+<select name="status" id="state" (change)="selectedValue($event)">
+    <option value="All">all</option>
+    <option value="Success">Success</option>
+    <option value="Failed">Failed</option>
+    <option value="Pending">Pending</option>
+</select>
+
+<!-- <div [ngStyle]="{'background-color': getColor(stateValue)}">{{stateValue}}></div> -->
+
+<h3> Custom directive</h3>
+<!-- <p appHighliteCustomDir>Hello</p> -->
+
+<h4>custom directive mouse hover</h4>
+<p appHighliteCustomDir class="card">hover on me</p>
+
+<h4>custom directive mouse enter</h4>
+<div appHighliteCustomDir class="parent">parent
+    <div class="child">child</div>
+</div>
+<p appHighliteCustomDir>mouse enter</p>
+
+<h4>host binding</h4>
+<button appHighliteCustomDir (click)="clickOn()">show me</button>
+
+<h5>Active inactive state</h5>
+<button appHighliteCustomDir  (click)="clickking()">state</button>
+
+<button (click)="toggle()">enable/disable</button>
+
+<button appHighliteCustomDir [isDisbled]="isDissbled">click me</button>
