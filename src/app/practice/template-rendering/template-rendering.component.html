@@ -1,0 +1,67 @@
+<h3>reusable ng-template for a user card and render it using ngTemplateOutlet.</h3>
+
+<ng-template #card let-name="name" let-roles="role" , let-email="email" , let-expirience="expi">
+    <div class="card">
+        <h4>details</h4>
+        <p>{{name}}</p>
+        <p>{{roles}}</p>
+        <p>{{email}}</p>
+        <p>{{expirience}}</p>
+    </div>
+</ng-template>
+
+<ng-container *ngFor="let detail of details" [ngTemplateOutlet]="card"
+    [ngTemplateOutletContext]="{name:detail.name , role:detail.role , email:detail.email , expi:'2.2'}">
+</ng-container>
+
+<button (click)="addUser()">Add User Card</button>
+
+<ng-container #cardInsert></ng-container>
+
+<ng-template #view>
+    <p>i can see you</p>
+</ng-template>
+
+<ng-template #cards>
+    <p>{{name}}</p>
+    <p>{{role}}</p>
+    <p>{{email}}</p>
+</ng-template>
+
+<button (click)="addMultipleUsers()">Add mutiple Users</button>
+
+<ng-template #multipleUsers let-name="name" , let-role="role" , let-email="email">
+    <div class="card">
+        <p>{{name}}</p>
+        <p>{{role}}</p>
+        <p>{{email}}</p>
+    </div>
+</ng-template>
+
+<ng-container #multiple></ng-container>
+
+<button (click)="clear()">clear</button>
+<button (click)="remove()">remove</button>
+
+<h3>content projection using ng content</h3>
+
+<ng-template #viewcard>
+    <div class="card">
+        <ng-content select="[content]"></ng-content>
+    </div>
+</ng-template>
+
+<ng-container #contents>
+  <!-- <h1>{{header}}</h1>
+  <p>{{body}}</p>
+  <footer>{{footer}}</footer> -->
+</ng-container>
+
+<button (click)="show()">show</button>
+
+<button (click)="removecard()">remove</button>
+
+
+<button (click)="showView()">showView</button>
+
+<ng-container #call></ng-container>

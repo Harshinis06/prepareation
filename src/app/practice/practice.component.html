@@ -1,9 +1,7 @@
-
 <h1>Angular interview practice – Set 1</h1>
 <h2>Data Binding</h2>
 <h3>Coding practice</h3>
-<app-bindings [recivingUserName]="sendinguserName" 
-(onChangeValue)="valueGet($event)"></app-bindings>
+<app-bindings [recivingUserName]="sendinguserName" (onChangeValue)="valueGet($event)"></app-bindings>
 <p>{{sendinguserName}}</p>
 
 <h2>Directives</h2>
@@ -11,3 +9,17 @@
 <app-directives [employeeName]="sendinguserName"></app-directives>
 <!-- <p appValidators>HEllo validator directive</p> -->
 
+<h2>Template Rendering</h2>
+<app-template-rendering>
+    <h1 #content content>content projection</h1>
+    <p #content content>content from parent</p>
+    <footer #content content>footer from parent for card</footer>
+
+    <div class="card">
+        <ng-template #temp let-single="single" let-dating="dating">
+            <p>{{single}}</p>
+            <p>{{dating}}</p>
+        </ng-template>
+    </div>
+
+</app-template-rendering>
