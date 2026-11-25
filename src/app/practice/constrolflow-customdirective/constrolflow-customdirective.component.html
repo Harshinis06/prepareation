@@ -1,0 +1,109 @@
+<p>constrolflow-customdirective works!</p>
+<h3>advanced directive</h3>
+<button (click)="admin()">Admin</button>
+<button (click)="employee()">Employee</button>
+<button (click)="guest()">Guest</button>
+<h3>dashboard Page using if
+    @if(isAdmin){
+    <div>
+        Admin Page
+    </div>
+    }
+    @else if(isEmployee){
+    <div>
+        Employee Page
+    </div>
+    }
+    @else if(isGuest){
+    <div>
+        Guest Page
+    </div>
+    }
+</h3>
+
+<h3>using switch</h3>
+@switch(role){
+@case ('admin'){
+<div>
+    admin
+</div>
+}
+
+@case ('employee'){
+<div>
+    employee
+</div>
+}
+
+@case ('guest'){
+<div>
+    guest
+</div>
+}
+
+}
+
+<div>
+    @for(emp of employees;track emp.id){
+    <!-- <p>name:{{$index+1}}.{{emp.name}}</p> -->
+    <!-- @if($first){
+    <p>{{emp.name}}</p>
+    } -->
+    <!-- @if($even){
+    <p>{{emp.name}}</p>
+    } -->
+    <!-- @if($last){
+    <p>{{emp.name}}</p>
+    } -->
+    @if($odd){
+    <p>{{emp.name}}</p>
+    }
+    }
+    @empty{
+    <span>not aviable</span>
+    }
+</div>
+<div>
+    <ul>
+        <li *ngFor="let emp of employees ; trackBy:trackBy">
+            <span>{{emp.name}}</span>
+        </li>
+    </ul>
+</div>
+
+<h3>Custom Structural directive</h3>
+<button (click)="showOff()">shoeOff</button>
+
+<div *appCustomstructuralDir="isVisible ; else:noData">
+    <p>Hello Angular advance</p>
+</div>
+
+<ng-template #noData>
+    <p>no data to display</p>
+</ng-template>
+
+
+<h3>Permission based ccustom directive</h3>
+
+<!-- <input [value]="currentUserRole" (input)="currentUser($event)" > -->
+
+<input [(ngModel)]="currentUserRole">
+
+<!-- <button *appPermissionCustomDir="'admin';userRole: currentUserRole;else:noContent">Delete User</button>
+<button *appPermissionCustomDir="'employee' ;userRole: currentUserRole ;else:guests">View User</button> -->
+
+<ng-container *appPermissionCustomDir="['admin','employee'];else:guests;userRole: currentUserRole">
+    @if(currentUserRole=='admin'){
+    <button>Delete User</button>
+    }@else{
+    <button>view User</button>
+    }
+</ng-container>
+
+<ng-template #guests>
+    <button>Guest</button>
+</ng-template>
+
+<!-- <ng-template #noContent>
+
+</ng-template>  -->

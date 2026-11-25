@@ -4,12 +4,13 @@ import { BindingsComponent } from './bindings/bindings.component';
 import { ValidatorsDirective } from '../shared/validators.directive';
 import { DirectivesComponent } from './directives/directives.component';
 import { TemplateRenderingComponent } from './template-rendering/template-rendering.component';
+import { ConstrolflowCustomdirectiveComponent } from './constrolflow-customdirective/constrolflow-customdirective.component';
 
 @Component({
   selector: 'app-practice',
   standalone: true,
   imports: [FormsModule,BindingsComponent,ValidatorsDirective,DirectivesComponent,
-    TemplateRenderingComponent,
+    TemplateRenderingComponent,ConstrolflowCustomdirectiveComponent
   ],
   templateUrl: './practice.component.html',
   styleUrl: './practice.component.scss'
