@@ -5,13 +5,13 @@ import { ValidatorsDirective } from '../shared/validators.directive';
 import { DirectivesComponent } from './directives/directives.component';
 import { TemplateRenderingComponent } from './template-rendering/template-rendering.component';
 import { ConstrolflowCustomdirectiveComponent } from './constrolflow-customdirective/constrolflow-customdirective.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ComponentsModuleModule } from './components-module/components-module.module';
 
 @Component({
   selector: 'app-practice',
   standalone: true,
-  imports: [FormsModule,BindingsComponent,ValidatorsDirective,DirectivesComponent,
-    TemplateRenderingComponent,ConstrolflowCustomdirectiveComponent
-  ],
+  imports: [ComponentsModuleModule],
   templateUrl: './practice.component.html',
   styleUrl: './practice.component.scss'
 })
